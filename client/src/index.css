@@ -1,0 +1,55 @@
+
+/* antd overwrite */
+input{
+    border-radius: 2px !important;
+    border:1px solid rgb(128, 128, 128,0.521) !important;
+    height: 40px !important;
+}
+input:focus{
+    outline: none !important;
+    box-shadow: none !important;
+    border:1px solid gray !important
+}
+label{
+    font-size: 16px !important;
+    color: black !important;
+}
+.ant-form-item{
+    margin: 10px 0 !important ;
+}
+
+/* Common styling */
+.card{
+    box-shadow: 0 0 2px grey;
+}
+.card-title{
+    font-size: 1.5rem;
+    font-weight: bold;
+}
+.normal-text{
+    font-size: 1rem;
+}
+.primary-button{
+    background-color: #005555  !important;
+    border-color: #005555 !important;
+    height: 40px !important;
+    width: 100% !important;
+    color: white !important;
+    font-size: 16px !important;
+}
+
+/* authentication-pages */
+.authentication{
+    height:100vh;
+    display:flex;
+    align-items:center;
+    justify-content: center;
+    /* alternative css */
+    /* position: absolute;
+    top: 50%;
+    left: 50%; */
+
+}
+.authentication-form{
+    width: 400px;
+}
