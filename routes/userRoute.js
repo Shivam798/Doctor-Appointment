@@ -2,6 +2,7 @@ const express = require("express");
 const User = require("../models/userModel");
 const bcrypt = require("bcrypt");
 const  router = express.Router();
+const jwt = require('jsonwebtoken')
 
 router.post("/register", async (req, res) => {
   try {
@@ -31,6 +32,26 @@ router.post("/register", async (req, res) => {
 });
 router.post("/login", async (req, res) => {
   try {
-  } catch (error) {}
+    const user = await User.findOne({email:req.body.email})
+    if (!user){
+      return res.status(200).send({message:"User does not exist",success:false})
+    }
+    if (!req.body.password){
+      return res.status(200).send({message:"Please enter the password",success:false})
+    }
+    const ismatch = await bcrypt.compare(req.body.password,user.password)
+    if(!ismatch){
+      return res.status(200).send({message:"Password does not match",success:false})
+    }
+    else{
+      const token = jwt.sign({id:user._id},process.env.JWT_SECRET,{expiresIn:"1d"}  )
+      res.status(200).send({message:"Login Successful",success:true,data:token})
+    }
+
+  } catch (error) {
+    console.log(error)
+    res.status(500).send({message:"Login Error",success:false,error})
+
+  }
 });
 module.exports = router;
