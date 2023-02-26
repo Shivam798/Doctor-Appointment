@@ -3,7 +3,7 @@ import {createSlice} from '@reduxjs/toolkit'
 export const alertSlice = createSlice({
     name:"alerts",
     initialState:{
-        loading:true
+        loading:false
     },
     reducers:{
         showloader:(state)=>{
@@ -12,7 +12,7 @@ export const alertSlice = createSlice({
         hideloader:(state)=>{
             state.loading=false
         }
-    }
+    } 
 }
 )
 
